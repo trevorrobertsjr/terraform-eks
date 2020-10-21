@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/psp: eks.privileged
+  creationTimestamp: "2020-10-21T05:05:24Z"
+  labels:
+    run: nopodiam
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:run: {}
+      f:spec:
+        f:containers:
+          k:{"name":"nopodiam"}:
+            .: {}
+            f:args: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:stdin: {}
+            f:stdinOnce: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:tty: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kubectl-run
+    operation: Update
+    time: "2020-10-21T05:05:24Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"14.0.1.112"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-10-21T05:05:27Z"
+  name: nopodiam
+  namespace: default
+  resourceVersion: "861644"
+  selfLink: /api/v1/namespaces/default/pods/nopodiam
+  uid: aa697fc5-0a2f-4d35-8c50-1476d05f5c91
+spec:
+  containers:
+  - args:
+    - bash
+    image: amazonlinux
+    imagePullPolicy: Always
+    name: nopodiam
+    resources: {}
+    stdin: true
+    stdinOnce: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-nqw2q
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-14-0-1-75.ec2.internal
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-nqw2q
+    secret:
+      defaultMode: 420
+      secretName: default-token-nqw2q
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:05:24Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:05:27Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:05:27Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:05:24Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://bdc498d99fe93719d0ae4c262ff3675368064b62e56c9e68af4de5a8eb9f2832
+    image: amazonlinux:latest
+    imageID: docker-pullable://amazonlinux@sha256:2c99363fc74d3a39f02365b964e73cceb2b2524c00e9977e16680156e2f79ee8
+    lastState: {}
+    name: nopodiam
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-10-21T05:05:26Z"
+  hostIP: 14.0.1.75
+  phase: Running
+  podIP: 14.0.1.112
+  podIPs:
+  - ip: 14.0.1.112
+  qosClass: BestEffort
+  startTime: "2020-10-21T05:05:24Z"

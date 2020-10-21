@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podiam
+spec:
+  serviceAccountName: testiam
+  containers:
+  - image: amazonlinux
+    name: podiam2

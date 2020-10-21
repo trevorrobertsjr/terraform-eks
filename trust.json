@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::533223665097:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/06488FCACCAB286F9B988915CDAE4BAC"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "oidc.eks.us-east-1.amazonaws.com/id/06488FCACCAB286F9B988915CDAE4BAC:sub": "system:serviceaccount:default:testiam"
+        }
+      }
+    }
+  ]
+}

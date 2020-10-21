@@ -1,0 +1,180 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/psp: eks.privileged
+  creationTimestamp: "2020-10-21T05:41:20Z"
+  labels:
+    run: podiam2
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:run: {}
+      f:spec:
+        f:containers:
+          k:{"name":"podiam2"}:
+            .: {}
+            f:args: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:stdin: {}
+            f:stdinOnce: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:tty: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:serviceAccount: {}
+        f:serviceAccountName: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kubectl-run
+    operation: Update
+    time: "2020-10-21T05:41:20Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"14.0.1.131"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2020-10-21T05:41:23Z"
+  name: podiam2
+  namespace: default
+  resourceVersion: "868568"
+  selfLink: /api/v1/namespaces/default/pods/podiam2
+  uid: 4dc91417-1eff-4840-8f1b-ee7ad7856532
+spec:
+  containers:
+  - args:
+    - bash
+    env:
+    - name: AWS_DEFAULT_REGION
+      value: us-east-1
+    - name: AWS_REGION
+      value: us-east-1
+    - name: AWS_ROLE_ARN
+      value: arn:aws:iam::533223665097:role/k8ssatestiamrole
+    - name: AWS_WEB_IDENTITY_TOKEN_FILE
+      value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+    image: amazonlinux
+    imagePullPolicy: Always
+    name: podiam2
+    resources: {}
+    stdin: true
+    stdinOnce: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: testiam-token-d5ls5
+      readOnly: true
+    - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+      name: aws-iam-token
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-14-0-1-75.ec2.internal
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: testiam
+  serviceAccountName: testiam
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: aws-iam-token
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          audience: sts.amazonaws.com
+          expirationSeconds: 86400
+          path: token
+  - name: testiam-token-d5ls5
+    secret:
+      defaultMode: 420
+      secretName: testiam-token-d5ls5
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:41:20Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:41:23Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:41:23Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-10-21T05:41:20Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://6087d11e7f9665b12a8206d22465c303e89b807031bf5b3e778b745eba9ec28b
+    image: amazonlinux:latest
+    imageID: docker-pullable://amazonlinux@sha256:2c99363fc74d3a39f02365b964e73cceb2b2524c00e9977e16680156e2f79ee8
+    lastState: {}
+    name: podiam2
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2020-10-21T05:41:22Z"
+  hostIP: 14.0.1.75
+  phase: Running
+  podIP: 14.0.1.131
+  podIPs:
+  - ip: 14.0.1.131
+  qosClass: BestEffort
+  startTime: "2020-10-21T05:41:20Z"
